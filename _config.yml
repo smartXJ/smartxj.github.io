@@ -3,16 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 求索
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
+author: smartxj
 language: en
 timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
+root: /smartxj.github.io
 url: https://smartxj.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
