@@ -1,0 +1,65 @@
+# main menu navigation | 导航栏
+menu:
+  home: /
+  archives: /archives
+  about: /about
+  message: /message
+  search: /search
+
+# Personal profile | 个人简介
+author: smartXj
+blogname: smartXj的博客  # Logo and website name | logo及网站名称
+notice: <p>路漫漫其修远兮，<br>吾将上下而求索!<br></p> # This is the announcement section of aside on the right | 公告部分
+github: https://github.com/smartXJ
+juejin: https://juejin.cn/user/3210229685698430/posts
+zhihu: https://www.zhihu.com
+csdn: https://blog.csdn.net/ZSH_jerry
+email: xj517356221@163.com  # email
+
+# Site introduction | 站点介绍，用于申请友链
+sitename: 求索日记  # 站点名称
+sitelink: https://smartxj.github.io/blogxj/ # 站点链接
+siteimg: https://avatars.githubusercontent.com/u/78629768?s=400&u=cdab2edabc90d3d51a1b13298ddd1e7c379a00fb&v=4 # 站点图片
+siteintroduction: 路漫漫其修远兮，吾将上下而求索！  # 站点介绍
+
+# 网站icon图标
+favicon: https://shuxhan-imgbed.oss-cn-hangzhou.aliyuncs.com/img/20210108143023.png
+
+# Whether to display categories and tags on the home page | 首页目录是否显示分类标签
+show_post_category: true
+show_post_tags: true
+
+# aside栏
+sidebar: true
+widgets: 
+  - notice  # 简介
+  - category  # 分类
+  - tag # 标签
+  - recent_posts  # 最近文章
+  - archive # 归档
+  - links # 友情链接
+  - attention # 通知
+
+links:  # 友情链接
+  - title: "王雨的博客"
+    url: https://blog.wangyu.link/
+
+
+# Station construction time | 建站时间
+buildtime: 2021   # year
+datetime: 03/01/2021 12:00:00   # specific time, The station has been running safely | 本站已安全运行时间
+
+# 代码复制
+codeblock: 
+  copy_button: 
+    enable: true
+    result: true
+  copyright:
+    enable: false
+    content: \n/**\n* 感谢您复制代码，使用代码请注明引用出处\n* shuxhan @ https://shuxhan.com\n*/
+
+# This topic is built into the twikoo comment system |  本主题内置的是twikoo评论系统
+# Official documents | 官方文档 https://twikoo.js.org/
+# twikoo:
+envID: shuxhan-2gcz5b7m7f845ec3 # 环境变量
+visitors: false  # 是否显示文章阅读量
