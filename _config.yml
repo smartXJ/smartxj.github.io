@@ -13,7 +13,8 @@ timezone: ''
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: https://smartxj.github.io/blogxj
+root: /smartxj.github.io
+url: https://smartxj.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -106,3 +107,4 @@ deploy:
   repo: https://github.com/smartxj/smartxj.github.io
   # example, https://github.com/hexojs/hexojs.github.io
   branch: gh-pages
+
