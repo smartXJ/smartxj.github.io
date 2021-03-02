@@ -24,11 +24,14 @@ var searchFunc = function (path, search_id, content_id) {
                 }
                 // 本地搜索主要部分
                 datas.forEach(function (data) {
+                    const origin = location.origin
                     var isMatch = true;
                     var content_index = [];
                     var data_title = data.title.trim().toLowerCase();
                     var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                    var data_url = data.url;
+                    var data_url = origin + data.url;
+                    console.log(data_url);
+
                     var index_title = -1;
                     var index_content = -1;
                     var first_occur = -1;
@@ -52,7 +55,7 @@ var searchFunc = function (path, search_id, content_id) {
                     // 返回搜索结果
                     if (isMatch) {
                         //结果标签
-                        str += "<li><a href='../" + data_url + "' class='search-result-title'>" + "> " + data_title + "</a>";
+                        str += "<li><a href='" + data_url + "' class='search-result-title'>" + "> " + data_title + "</a>";
                         var content = data.content.trim().replace(/<[^>]+>/g, "");
                         if (first_occur >= 0) {
                             // 拿出含有搜索字的部分
