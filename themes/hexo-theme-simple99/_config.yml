@@ -43,6 +43,8 @@ widgets:
 links:  # 友情链接
   - title: "王雨的博客"
     url: https://blog.wangyu.link/
+  - title: "喜提狗命的博客"
+    url: https://lisheng-code.github.io/ 
 
 
 # Station construction time | 建站时间
