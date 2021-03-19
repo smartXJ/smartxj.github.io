@@ -183,6 +183,7 @@
 2. Second item
 3. Third item
     1. Indented item
+        1.min item
     2. Indented item
 4. Fourth item
 </code></pre>
@@ -289,7 +290,7 @@
                 </li>
                 <li>
                     <span>字数</span>
-                    <a>24</a>
+                    <a>27</a>
                 </li>
                 <li>
                     <span>访客</span>
@@ -428,6 +429,7 @@
       <script>
         $(function () {
           var elm = $('#toc');
+          console.log(elm, 'elm');
           var startPos = $(elm).offset().top;
         $.event.add(window, "scroll", function () {
           var p = $(window).scrollTop();
