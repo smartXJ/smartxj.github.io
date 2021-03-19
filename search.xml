@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>第一次使用</title>
+      <link href="2021/02/26/test/"/>
+      <url>2021/02/26/test/</url>
+      
+        <content type="html"><![CDATA[<pre><code>这是一次测试1. First item2. Second item3. Third item    1. Indented item    2. Indented item4. Fourth item</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
