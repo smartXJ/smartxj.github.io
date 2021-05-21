@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   
   <title>
-    分类: 前端 | 求索
+    GraphQL 入门 | 求索
   </title>
   <meta content="width=device-width, initial-scale=1" name="viewport">
   <meta name="theme-color" content="#4184f3">
@@ -135,42 +135,148 @@
 				<div class="container content">
 					<div class="scene_element scene_element--fadein">
 						<div class="row">
-    <div class="main">
-   
-        <article class="title-list">
-            
-                <h3>
-                    前端
-                </h3>
-            
-            
-            <section>
-                <time class="post-date" datetime="2021-04-02T02:46:06.000Z">
-                    2021-04-02
-                </time>
-                <a href="/2021/04/02/js-optimize/">
-                    JavaScript 代码优化技巧
-                </a>
-                
-            </section>
-            
-            <section>
-                <time class="post-date" datetime="2021-02-26T05:57:29.000Z">
-                    2021-02-26
-                </time>
-                <a href="/2021/02/26/test/">
-                    第一次使用
-                </a>
-                
-            </section>
-            
-        </article>
+  <div class="main main-article">
+    <article>
+
+      
+        <header class="post-header no-cover">
+      
+        </header>
+
+      <!-- 标题 -->
+      <h1 class="post-title">
+        GraphQL 入门
+      </h1>
+
+      <section class="post-info post-info-bottom">
+
+        <!-- 发布时间 -->
+        <span class="post-date">
+          <span class="post-date-text">
+            发布于: 2021-05-21
+          </span>
+        </span>
         
-  
-    </div>
+        <!-- 分类 -->
+        
+
+        <!-- 标签 -->
+        
+
+        <!-- 阅读量统计 -->
+        
+
+      </section>
+
+      <!-- 正文 -->
+      <section class="post-content">
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>GraphQL 是一个用于 API 的查询语言，是一个使用基于类型系统来执行查询的服务端运行时（类型系统由你的数据定义）。GraphQL 并没有和任何特定数据库或者存储引擎绑定，而是依靠你现有的代码和数据支撑。</p>
+<h2 id="restful-api-与-GraphQL"><a href="#restful-api-与-GraphQL" class="headerlink" title="restful api 与 GraphQL"></a>restful api 与 GraphQL</h2><p>restful据url查询所有的字段结构都是固定好的当需要改变字段时只能改接口或是重写接口，会造成资源重复调用的问题<br>grapql按需查询（写法上增加的代码重复性，增加了前端的代码量），需要什么拿什么 只有一个接口</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RESTFul</th>
+<th>GraphQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>接入简单</td>
+<td>查询方便，按需查询</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>接口管理问题</td>
+<td>会增加架构复杂度</td>
+</tr>
+</tbody></table>
+<h2 id="使用JavaScript-构建项目"><a href="#使用JavaScript-构建项目" class="headerlink" title="使用JavaScript 构建项目"></a>使用JavaScript 构建项目</h2><p>基于 Express webserver 服务器的一个 GraphQL API 服务端参考实现，你可以用它结合常规 Express webserver 来运行 GraphQL，也可以作为独立 GraphQL 服务器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install express express-graphql graphql</span><br></pre></td></tr></table></figure>
+<p>然后使用 node server.js 以运行 server.js 中的代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">&#x27;express&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> graphqlHTTP = <span class="built_in">require</span>(<span class="string">&#x27;express-graphql&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> &#123; buildSchema &#125; = <span class="built_in">require</span>(<span class="string">&#x27;graphql&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// String Int Boolean ID float 是schema的基本数据类型 可以在shema声明时直接使用</span></span><br><span class="line"><span class="keyword">var</span> schema = buildSchema(<span class="string">`</span></span><br><span class="line"><span class="string">  type Query &#123;</span></span><br><span class="line"><span class="string">    hello: String</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">`</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> root = &#123; <span class="attr">hello</span>: <span class="function">() =&gt;</span> <span class="string">&#x27;Hello world!&#x27;</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = express();</span><br><span class="line">app.use(<span class="string">&#x27;/graphql&#x27;</span>, graphqlHTTP(&#123;</span><br><span class="line">  <span class="comment">// 定义方法和类型</span></span><br><span class="line">  schema: schema,</span><br><span class="line">  <span class="comment">// 处理schema</span></span><br><span class="line">  rootValue: root,</span><br><span class="line">  <span class="comment">// graphiql 是否启用调试界面</span></span><br><span class="line">  graphiql: <span class="literal">true</span>,</span><br><span class="line">&#125;));</span><br><span class="line">app.listen(<span class="number">4000</span>, <span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;Now browse to localhost:4000/graphql&#x27;</span>));</span><br></pre></td></tr></table></figure>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><p>当路径不等于 /graphql 或者cookie不等于auth 进入下面逻辑</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">const</span> middleware = <span class="function">(<span class="params">req, res, next</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (req.url.indexOf(<span class="string">&#x27;/graphql&#x27;</span>) === -<span class="number">1</span> || req.headers.cookie.indexOf(<span class="string">&#x27;auth&#x27;</span>) === -<span class="number">1</span>)&#123;</span><br><span class="line">      res.send(<span class="string">&#x27;error: 您没有访问权限&#x27;</span>)</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      next()</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="前端调用"><a href="#前端调用" class="headerlink" title="前端调用"></a>前端调用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> querys =query <span class="function"><span class="title">classMessage</span>(<span class="params">$name: <span class="built_in">String</span></span>)</span>&#123; classMessage&#123; count, teacherName salary(name: $name) &#125; &#125;</span><br><span class="line"><span class="keyword">const</span> variables =&#123;<span class="attr">name</span>:<span class="string">&#x27;张三&#x27;</span>&#125;</span><br><span class="line">fetch(<span class="string">&#x27;/graphql&#x27;</span>,&#123;</span><br><span class="line">  method: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">&#x27;Content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Aceept&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  body:<span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">    querys,</span><br><span class="line">    variables</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>参考<br>官方地址：<a target="_blank" rel="noopener" href="https://graphql.com/">https://graphql.com/</a><br>中文地址：<a target="_blank" rel="noopener" href="https://graphql.cn/">https://graphql.cn/</a></p>
+
+      </section>
+
+    </article>
     
-    <aside>
-        <div class="aside-wrap">
+    
+
+
+    <!-- 版权声明 -->
+    <div class="post-copyright">
+	<div>
+		<strong>本文作者：</strong>
+		<span>
+			肖俊
+		</span>
+	</div>
+	<div>
+		<strong>本文链接：</strong>
+		<a href="https://smartxj.github.io/2021/05/21/GraphQL/">
+			https://smartxj.github.io/2021/05/21/GraphQL/
+		</a>
+	</div>
+	<div>
+		<span>欢迎任何形式的转载，但请务必注明出处。</span>
+	</div>
+	<div>
+		<span>由于笔者水平有限，如果文章或代码有表述不当之处，还请不吝赐教。</span>
+	</div>
+</div>
+
+
+<style>
+	.post-copyright {
+		background-color: #fff;
+		/* box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.05); */
+		box-shadow: 0 6px 30px -10px rgba(0, 0, 0, 0.1);
+		display: block;
+		margin: 20px auto;
+		margin-bottom: 15px;
+		padding: 10px;
+		font-size: 15px;
+		color: #2e2d2d;
+		word-break: break-all;
+		line-height: 1.8;
+	}
+
+
+	.post-copyright a {
+		color: #2e2d2d;
+		border-bottom: 1px solid #999;
+	}
+
+	.post-copyright a:hover {
+		color: #2e2d2d;
+		border-bottom: 1px solid #000;
+	}
+</style>
+
+    <!-- comments -->
+    <div class="comments">
+    <h3 id="commenttitle" style="margin-top: 20px;margin-left: 10px;">评论区</h3>
+    <div id="tcomment"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/twikoo@1.0.0/dist/twikoo.all.min.js"></script>
+<script>twikoo.init({ envId: 'hello-cloudbase-6gk3602ma2286948', el: '#tcomment' })</script>
+
+    <div class="right-icon">
+      <div id="to-valine" class="right-icon-item">
+        <a href="#commenttitle">评论</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <aside>
+    <div class="aside-wrap">
     
         <section class="widget-wrap">
     <h3 class="widget-title">简介</h3>
@@ -344,9 +450,25 @@
     
 </div>
 
-    </aside>
-   
+    <!-- 目录 -->
     
+      <div id="toc">目录</div>
+      <script>
+        $(function () {
+          var elm = $('#toc');
+          console.log(elm, 'elm');
+          var startPos = $(elm).offset().top;
+        $.event.add(window, "scroll", function () {
+          var p = $(window).scrollTop();
+          $(elm).css('margin-left', '0px');
+          $(elm).css('position', ((p) > startPos) ? 'fixed' : 'static');
+          $(elm).css('top', ((p) > startPos) ? '65px' : '')
+        })
+      })
+      </script>
+    
+  </aside>
+  
 </div>
 
 					</div>
