@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#4184f3">
   
   
-  <link href="https://github.com/smartXJ/smartxj.github.io/blob/master/image/h-icon.png" rel="icon" />
+  <link href="https://raw.githubusercontent.com/smartXJ/smartxj.github.io/master/image/h-icon.png" rel="icon" />
   
 
   
@@ -200,7 +200,26 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> variables = <span class="literal">null</span></span><br><span class="line"><span class="keyword">let</span> query = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="comment">// 查询user name为Tom 的user 查询时可去掉query</span></span><br><span class="line"><span class="comment">// query =&#x27;query user($name: String!)&#123; user(name:$name) &#123; id, name&#125; &#125;&#x27;</span></span><br><span class="line"><span class="comment">// 传入name的值</span></span><br><span class="line"><span class="comment">// variables = &#123;name:&#x27;Tom&#x27;&#125;</span></span><br><span class="line"><span class="comment">// 或者 也可以这么写 将传入的值写入query内</span></span><br><span class="line"><span class="comment">// query = &#x27;&#123;user(name:&quot;Tom&quot;)&#123;id&#125;&#125;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建user</span></span><br><span class="line"><span class="comment">// query = &#x27; mutation createUser($user: UserInput!)&#123; createUser(user:$user)&#123; id, name &#125;&#125;&#x27;</span></span><br><span class="line"><span class="comment">// variables = &#123;</span></span><br><span class="line"><span class="comment">//   user: &#123;id: 4, name: &#x27;xiao&#x27;&#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line"><span class="comment">// query = &#x27;mutation &#123; createUser( user:&#123; id: 5, name: &quot;xiao&quot; &#125;)&#123; id, name &#125; &#125;&#x27;</span></span><br><span class="line">fetch(<span class="string">&#x27;http://localhost:4000/graphql&#x27;</span>,&#123;</span><br><span class="line">  method: <span class="string">&quot;POST&quot;</span>,</span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">&#x27;Content-type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span><br><span class="line">    <span class="string">&#x27;Aceept&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  body:<span class="built_in">JSON</span>.stringify(&#123;</span><br><span class="line">    query,</span><br><span class="line">    <span class="comment">// variables</span></span><br><span class="line">  &#125;)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">res</span> =&gt;</span> res.json)</span><br><span class="line">  .then(<span class="function"><span class="params">res</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">//查询user &#123; data: &#123; user: &#123; id: 1, name: &#x27;Tom&#x27;&#125; &#125; &#125;</span></span><br><span class="line">  <span class="comment">//创建user &#123; data: &#123; user: &#123; id: 4, name: &#x27;xiao&#x27;&#125; &#125; &#125;</span></span><br><span class="line">  <span class="built_in">console</span>.log(res);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>restful据url查询所有的字段结构都是固定好的当需要改变字段时只能改接口或是重写接口，会造成资源重复调用的问题<br>grapql按需查询（写法上增加的代码重复性，增加了前端的代码量），需要什么拿什么 只有一个接口<br>grapql不包含任何SQL语句，数据库处理，它只是将数据拿到之后进行一下过滤，再返回给前端</p>
-<p>下面是RESTFul与GraphQL 大概的比较<br>|     | RESTFul  | GraphQL |<br>|  —-  | —-  | —- |<br>| 优点  | 接入简单 | 查询方便，按需查询 |<br>| 缺点  | 接口管理问题 | 会增加架构复杂度 |</p>
+<p>下面是RESTFul与GraphQL 大概的比较</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>RESTFul</th>
+<th>GraphQL</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>优点</td>
+<td>接入简单</td>
+<td>查询方便，按需查询</td>
+</tr>
+<tr>
+<td>缺点</td>
+<td>接口管理问题</td>
+<td>会增加架构复杂度</td>
+</tr>
+</tbody></table>
 <p>参考<br>官方地址：<a target="_blank" rel="noopener" href="https://graphql.com/">https://graphql.com/</a><br>中文地址：<a target="_blank" rel="noopener" href="https://graphql.cn/">https://graphql.cn/</a></p>
 
       </section>
@@ -328,15 +347,15 @@
         
            
             
-              <a class="category-list-item" href="/categories/前端">
-                <span class="category-list-link">前端</span>
+              <a class="category-list-item" href="/categories/后端">
+                <span class="category-list-link">后端</span>
                 <span class="category-list-number">(2)</span>
               </a>
             
            
             
-              <a class="category-list-item" href="/categories/后端">
-                <span class="category-list-link">后端</span>
+              <a class="category-list-item" href="/categories/前端">
+                <span class="category-list-link">前端</span>
                 <span class="category-list-number">(2)</span>
               </a>
             
